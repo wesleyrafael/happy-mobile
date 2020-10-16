@@ -3,7 +3,7 @@ import { View, StyleSheet, Dimensions, Text } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 import mapMarkerImg from '../../images/map-marker.png';
 
@@ -23,6 +23,7 @@ export default function SelectMapPosition() {
           latitudeDelta: 0.008,
           longitudeDelta: 0.008,
         }}
+        provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
       >
         <Marker 

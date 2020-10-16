@@ -17,9 +17,15 @@ const Header = ({ title, showCancel = true }: HeaderProps) => {
                 <Feather name="arrow-left" size={24} color="#14b6d6" />
             </BorderlessButton>
             <Text style={styles.title}>{title}</Text>
-            {showCancel && <BorderlessButton onPress={() => navigation.navigate("OrphanagesMap")}>
-                <Feather name="x" size={24} color="#ff669b" />
-            </BorderlessButton>}
+            {showCancel ?
+                (
+                    <BorderlessButton onPress={() => navigation.navigate("OrphanagesMap")}>
+                        <Feather name="x" size={24} color="#ff669b" />
+                    </BorderlessButton>
+                ) : (
+                    <View />
+                )
+            }
         </View>
     );
 };
@@ -41,8 +47,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Nunito_600SemiBold',
         color: '#8fa7b3',
         fontSize: 16,
-        flex: 1,
-        textAlign: 'center'
     }
 });
 
