@@ -5,7 +5,7 @@ const { height, width } = Dimensions.get('window');
 import { Feather } from '@expo/vector-icons';
 
 import mapMarker from '../images/map-marker.png';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import api from './services/api';
 
 interface Orphanage {
@@ -49,9 +49,9 @@ const OrphanagesMap = () => {
     const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
     const navigation = useNavigation();
 
-    useEffect(() => {
+    useFocusEffect(() => {
         fetchOrphanages();
-    }, []);
+    });
 
     const fetchOrphanages = async () => {
         try {
@@ -74,7 +74,7 @@ const OrphanagesMap = () => {
                 }}
                 provider={PROVIDER_GOOGLE}
             >
-                {orphanages.map(orphanage => <MarkerWithCallout orphanage={orphanage} />)}
+                {orphanages.map(orphanage => <MarkerWithCallout key={orphanage.id} orphanage={orphanage} />)}
             </MapView>
 
             <View style={styles.footer}>

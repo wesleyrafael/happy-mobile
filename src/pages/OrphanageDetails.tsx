@@ -70,7 +70,6 @@ const OrphanageDetails = () => {
         </View>
       ) : null}
 
-
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>{orphanage.name}</Text>
         <Text style={styles.description}>{orphanage.about}</Text>
