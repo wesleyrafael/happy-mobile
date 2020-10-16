@@ -1,13 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
-import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
+import { StyleSheet, Dimensions } from 'react-native';
 const { height, width } = Dimensions.get('window');
-import { Feather } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold } from '@expo-google-fonts/nunito';
-
-import mapMarker from './src/images/map-marker.png';
+import Routes from './src/routes';
 
 const App = () => {
   const [fontsLoaded] = useFonts({Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold});
@@ -17,46 +13,7 @@ const App = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <MapView 
-        style={styles.map}
-        initialRegion={{
-          latitude: -5.08921, 
-          longitude: -42.8016,
-          latitudeDelta: 0.008,
-          longitudeDelta: 0.008,
-        }}
-        provider={PROVIDER_GOOGLE}
-      >
-        <Marker 
-          icon={mapMarker}
-          coordinate={{
-            latitude: -5.08921, 
-            longitude: -42.8016,
-          }}
-          calloutAnchor={{
-            x: 2.8,
-            y: 0.88,
-          }}
-        >
-          <Callout tooltip={true} onPress={() => {}}>
-            <View style={styles.calloutContainer}>
-              <Text style={styles.calloutText}>Lar das meninas</Text>
-            </View>
-          </Callout>
-        </Marker>
-      </MapView>
-
-      <View style={styles.footer}> 
-          <Text style={styles.footerText}>
-            2 orfanatos encontrados
-          </Text>
-
-          <TouchableOpacity style={styles.createOrphanageButton} onPress={() => {}}>
-            <Feather name="plus" size={20}  color="#fff"/>
-          </TouchableOpacity>
-      </View>
-    </View>
+    <Routes />
   );
 }
 
